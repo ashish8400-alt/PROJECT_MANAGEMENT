@@ -1,7 +1,50 @@
 import { text } from "express";
 import Mailgen from "mailgen";  // mailgen me kaise mail generate karna hai ye batata hai
+import nodemailer from "nodemailer";
 
 
+const sendEmail = async (Options) => {
+    const mailGenerator = new Mailgen({
+      theme:"default",
+      product:{
+        name: "Task Manager",
+        link:"https://taskmanagelink.com"
+      }
+    })
+const emailTextual = mailGenerator.generatePlaintext(Options.mailgenContent);
+
+
+const emailHtml = mailGenerator.generate(Options.mailgenContent);
+
+
+
+
+
+const transporter = nodemailer.createTestAccount({
+  host:process.env.MAILTRAP_SMTP_HOST,
+  port:process.env.MAILTRAP_SMTP_PORT,
+   auth:{
+    user:process.env.MAILTRAP_SMTP_USER,
+    pass:MAILTRAP_SMTP_PASS
+   }
+})
+
+const mail = {
+  from:"mail.taskmanager@example.com",
+  to:Options.email,
+  subject:Options.subject,
+  text:emailTextual,
+  html:emailHtml
+}
+
+try {
+  await transporter.sendEmail(mail);
+} catch (error) {
+  console.log("Email service failed siliently . Make sure that you have provided your MAILTAP credentials in the .env file ")
+  console.error("Error:", error)
+}
+
+}
 
 
 
@@ -45,5 +88,5 @@ const  forgotPasswordMailgenContent = (username, passwordResetUrl )=>{
 
 
 export{
-  emailVerificationMailgenContent, forgotPasswordMailgenContent
+  emailVerificationMailgenContent, forgotPasswordMailgenContent, sendEmail
 };

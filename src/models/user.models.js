@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
-
 const userSchema = new Schema(
   {
     avatar: {
@@ -75,13 +74,11 @@ const userSchema = new Schema(
   },
 );
 
-
 // Hooks hai ye pahle data/password check karega phir data/password save karega (pre) ke wajah se
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) return ;
+  if (!this.isModified("password")) return;
 
   this.password = await bcrypt.hash(this.password, 10);
-  
 });
 
 // ye compare karta hai ki password hai ki nhi

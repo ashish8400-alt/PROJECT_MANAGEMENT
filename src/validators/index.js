@@ -1,5 +1,7 @@
 import { body } from "express-validator";
 
+
+
 const userRegisterValidator = () => {
   return [
     body("email")
@@ -20,6 +22,8 @@ const userRegisterValidator = () => {
     body("fullname").optional().trim(),
   ];
 };
+
+
 
 const userLoginValidator = () => {
   return [

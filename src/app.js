@@ -36,4 +36,12 @@ app.get("/", (req, res) => {
   res.send("welcome to basecampy");
 });
 
+
+app.use((err, req, res, next) => {
+    res.status(500).json({
+        message: err.message
+    });
+});
+
+
 export default app;

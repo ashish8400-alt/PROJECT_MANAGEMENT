@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 
+
+
 const userSchema = new Schema(
   {
     avatar: {
@@ -11,7 +13,7 @@ const userSchema = new Schema(
         localPath: String,
       },
       default: {
-        url: `https://placehold.co/200x200`,
+        url: `https://th.bing.com/th/id/OIP.8OED_r6NmKmk334lE3Nh7AHaHa?w=152&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3`,
         localPath: "",
       },
     },

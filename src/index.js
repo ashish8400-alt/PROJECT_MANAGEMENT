@@ -6,6 +6,7 @@ dotenv.config({
   path: "./.env",
 });
 
+
 const port = process.env.PORT || 3000;
 
 connectDB()
@@ -15,6 +16,6 @@ connectDB()
     });
   })
   .catch((err) => {
-    console.log("MongoDB connection error", err);
+    console.log("Hi, MongoDB connection error", err);
     process.exit(1);
   });

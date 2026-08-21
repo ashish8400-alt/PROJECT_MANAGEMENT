@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 
+
 const app = express();
 
 // basic configurations
@@ -31,6 +32,7 @@ import authRouter from "./routes/auth.routes.js";
 
 app.use("/api/v1/healthcheck", healthCheckRouter);
 app.use("/api/v1/auth", authRouter);
+
 
 app.get("/", (req, res) => {
   res.send("welcome to basecampy");
